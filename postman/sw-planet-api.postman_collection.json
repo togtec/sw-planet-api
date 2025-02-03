@@ -1,0 +1,341 @@
+{
+	"info": {
+		"_postman_id": "a4e67c64-be1e-408d-8b75-364f7dda91c1",
+		"name": "sw-planet-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28811232"
+	},
+	"item": [
+		{
+			"name": "LIST - Returns All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/planets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"planets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LIST - By Climate - Returns 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/planets?climate=temperate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"planets"
+					],
+					"query": [
+						{
+							"key": "climate",
+							"value": "temperate"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LIST - By Terrain - Returns 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/planets?terrain=jungle",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"planets"
+					],
+					"query": [
+						{
+							"key": "terrain",
+							"value": "jungle"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LIST - By Climate & Terrain - Returns 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/planets?climate=temperate&terrain=mountains",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"planets"
+					],
+					"query": [
+						{
+							"key": "climate",
+							"value": "temperate"
+						},
+						{
+							"key": "terrain",
+							"value": "mountains"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listPlanets_ReturnsFilteredPlanets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/planets?terrain=arid&climate=desert",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"planets"
+					],
+					"query": [
+						{
+							"key": "terrain",
+							"value": "arid"
+						},
+						{
+							"key": "climate",
+							"value": "desert"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE - Returns 201 Created and the Planet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"lua\",\r\n    \"climate\": \"seco\",\r\n    \"terrain\": \"rochoso\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/planets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"planets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE - Invalid Data - Returns 422 Unprocessable Entity",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"\",\r\n    \"climate\": \"\",\r\n    \"terrain\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/planets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"planets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE - Existing Planet - Returns 409 Conflict",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Tatooine\",\r\n    \"climate\": \"arid\",\r\n    \"terrain\": \"desert\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/planets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"planets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ONE - Returns 200 and the Planet",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/planets/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"planets",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ONE - Invalid ID - Returns 404 Not Found",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/planets/100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"planets",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET By Name - Returns 200 and the Planet",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/planets/name/Tatooine",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"planets",
+						"name",
+						"Tatooine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET By Name - non-existent - Returns 404 Not Found",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/planets/name/Terra",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"planets",
+						"name",
+						"Terra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE - Returns 204 No Content",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/planets/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"planets",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE - Invalid ID - Returns 404 Not Found",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/planets/99",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"planets",
+						"99"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
