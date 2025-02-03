@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img alt="Licença" src="https://img.shields.io/static/v1?label=Licença&message=MIT&color=8257E5&labelColor=000000">
+  <img alt="License" src="https://img.shields.io/badge/License-MIT-8257E5?style=flat&labelColor=000000">
   <img src="https://img.shields.io/static/v1?label=Curso na Udemy&message=Testes automatizados na prática com Spring Boot&color=8257E5&labelColor=000000" alt="Testes automatizados na prática com Spring Boot" />
 </p>
 
